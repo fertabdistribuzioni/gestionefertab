@@ -1,0 +1,134 @@
+:root {
+  font-family: 'Roboto', sans-serif;
+  font-size: 10px;
+
+  color-scheme: light;
+  background-color: var(--bgColor);
+  color: var(--textColor);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --bgColor: #F8F8F8;
+  --textColor: #29166E;
+  --primaryColor: #C3251D;
+  --navbarColor: rgba(248, 248, 248, .9);
+  --buttonShadow_hover: rgba(195, 37, 29, .5);
+  --buttonShadow_active: rgba(195, 37, 29, .8);
+  --placeholderColor: #A9A9AC;
+  --cardTransparentColor: rgba(191, 191, 191, 0.2);
+  --cardSolidColor: #ECECEC;
+  --boxShadowColor: rgba(0, 0, 0, .2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html { scrollbar-gutter: stable; }
+
+#pageContent {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+::selection { background-color: var(--primaryColor); color: var(--bgColor); }
+
+h1 { font-size: 8.4rem; line-height: 1.1; }
+h3 { font-size: 3rem; }
+h4 { font-size: 2.4rem; }
+p { font-size: 1.8rem; line-height: 1.4; }
+.smallText { font-size: 1.3rem; }
+
+nav {
+  max-width: 100%; /*! questa riga non c'è in navbar fertab */
+  position: sticky;
+  top: 0;
+  background-color: var(--navbarColor);
+  padding: 1.6rem 1.8rem; 
+  width: 100vw;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  #navbarLogo { width: 125px; transform-origin: center top; }
+  #menu {
+    display: flex; gap: 1.8rem;
+    .nav-link.active { text-decoration: underline; filter: brightness(110%); }
+    @media (hover: hover) { .nav-link:hover:not(.active) { text-decoration: none; filter: brightness(105%); } }
+  }
+}
+@media (max-width: 375px) { #navbarLogo { display: none; } }
+footer { text-align: center; padding: 0 1.8rem 1.8rem 1.8rem; }
+
+button {
+  background-color: var(--primaryColor);
+  color: var(--bgColor);
+  font-size: 1.8rem;
+  border-radius: 15px;
+  border: none;
+  padding: 1rem;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: box-shadow .15s, filter .15s;
+}
+@media (hover: hover) { button:hover { outline: none; box-shadow: 0 0 15px var(--buttonShadow_hover); } }
+@media (focus: focus) { button:focus { outline: none; box-shadow: 0 0 15px var(--buttonShadow_hover); } }
+button:active { box-shadow: 0 0 15px var(--buttonShadow_active); filter: brightness(105%); }
+button:disabled { background-color: #8a211b; opacity: 0.6; pointer-events: none; }
+
+.secondaryButton {
+  background-color: transparent;
+  color: var(--textColor);
+  border: 3px var(--textColor) solid;
+  user-select: none;
+}
+@media (hover: hover) { .secondaryButton:hover { outline: none; box-shadow: none; } }
+@media (focus: focus) { .secondaryButton:focus { outline: none; box-shadow: none; color: var(--primaryColor); border: 3px var(--primaryColor) solid; } }
+.secondaryButton:active { box-shadow: none; filter: none; outline: none; color: var(--primaryColor); border: 3px var(--primaryColor) solid; }
+.secondaryButton:disabled { background-color: transparent;  opacity: 0.6; pointer-events: none; }
+
+.textButton {
+  padding: 0;
+  border-radius: 0;
+  background-color: transparent;
+  height: max-content;
+  width: max-content;
+  color: var(--primaryColor);
+  text-decoration: inherit;
+}
+@media (hover: hover) { .textButton:hover { box-shadow: none; text-decoration: underline; } }
+@media (focus: focus) { .textButton:focus { box-shadow: none; text-decoration: underline; } }
+.textButton:active { box-shadow: none; filter: brightness(110%); }
+
+a { font-size: 1.8rem; font-weight: 500; color: var(--primaryColor); cursor: pointer; text-decoration: inherit; user-select: none; }
+@media (hover: hover) { a:hover { text-decoration: underline; } }
+a:active { filter: brightness(110%); }
+
+label { font-size: 1.8rem; margin-top: 1.6rem; }
+input, textarea {
+  font-family: inherit;
+  font-size: 1.8rem;
+  width: 100%;
+  height: 50px;
+  border-radius: 15px;
+  padding: 10px;
+  resize: none;
+  border: 3px var(--textColor) solid;
+}
+input::placeholder, textarea::placeholder { color: var(--placeholderColor); }
+input:focus, textarea:focus { outline: none; border: 3px var(--primaryColor) solid; }
+
+.inlineIcon { width: 1.8rem; margin-right: 1rem; user-select: none; }
+
+*::-webkit-scrollbar { width: 11px; }
+  
+*::-webkit-scrollbar-track { background: var(--bgColor); }
+  
+*::-webkit-scrollbar-thumb { background: var(--placeholderColor); border-radius: 15px; border: 3px solid var(--bgColor); }

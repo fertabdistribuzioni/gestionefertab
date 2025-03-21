@@ -1,0 +1,174 @@
+#aggiungiProdotto {
+  max-width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 8.4rem;
+  align-items: center;
+  justify-items: center;
+  margin: 0 3rem 3rem 3rem;
+}
+@media (min-width: 744px) {
+  #aggiungiProdotto > div:first-child {
+    justify-self: end; /* La prima colonna (a sinistra) si allinea al margine destro */
+  }
+  #aggiungiProdotto > div:last-child {
+    justify-self: start; /* La seconda colonna (a destra) si allinea al margine sinistro */
+  }
+}
+
+#spazioAggiunta { text-align: center; }
+
+#form {
+  justify-self: center;
+  min-width: 250px;
+  width: 50vw;
+  max-width: 300px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  textarea { height: 155px; }
+  input[type="file"] { display: none; }
+  .secondaryButton {
+    color: var(--placeholderColor);
+    height: 50px;
+    width: 100%;
+    font-weight: 400;
+    text-align: left;
+    padding: 10px;
+    .inputImageLoaded {
+      color: var(--textColor);
+      white-space: nowrap;         
+      overflow: hidden;          
+      text-overflow: ellipsis;   
+      max-width: 100%;             
+      display: inline-block;
+      text-align: left;
+    }
+  }
+  .secondaryButton:active { .inputImageLoaded { color: var(--primaryColor) !important; } }
+}
+.descriptionedInput {
+  display: flex; width: 100%; align-items: center;
+  p { margin-left: 1rem; }
+}
+
+#newProduct {
+  text-align: center;
+  h3 { margin-bottom: 1.6rem; }
+}
+#aggiungi-annulla {
+  display: flex; justify-content: center; margin-top: 3rem; gap: 1.6rem; width: 250px;
+  button { width: 117px; }
+}
+
+#productList {
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 250px);
+  text-align: center;
+  gap: clamp(50px, 5vw, 75px);
+  justify-content: center;
+  margin-top: 3.6rem;
+}
+.prodCard {
+  margin: 0 auto; /*! questa riga non c'è in prodCard del sito */
+  background-color: var(--cardTransparentColor);
+  border-radius: 15px;
+  width: 250px;
+  height: 365px;
+  text-align: left;
+  box-shadow: 2px 7px 13px 0px var(--boxShadowColor);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  will-change: transform, filter;
+  .productImage {
+    display: block;
+    width: 100%;
+    height: 150px;
+    border-radius: 15px 15px 0 0;
+    object-fit: cover;
+    object-position: center;
+    transition: filter .3s ease;
+  }
+  .prodBody {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-height: 215px;
+    .prodInfo {
+      padding-top: 1.8rem;
+      margin-bottom: 1.1rem;
+      z-index: 1;
+      background-color: var(--cardSolidColor);
+      border-radius: 15px;
+      width: 250px;
+      text-wrap: pretty;
+      display: -webkit-box;
+      line-clamp: 3;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      transition: all 300ms ease;
+      h4 { margin: 0 1.8rem .5rem 1.8rem; }
+      .prodDescription { padding: 0 1.8rem; }
+    }
+    .prodBottom {
+      background-color: var(--cardSolidColor);
+      z-index: 2;
+      position: absolute;
+      bottom: 1.8rem;
+      width: 250px;
+      height: min-content;
+      padding: 0 1.8rem 0 1.8rem;
+      .textButton { margin-bottom: 1.8rem; user-select: none; }
+      .prodBuy {
+        display: flex; gap: 1.8rem; align-items: center;
+        button { flex: 1; }
+        .prodBuyInfo {
+          display: flex;
+          flex-direction: column;
+          line-height: 1;
+          p { padding-left: 1.5px; }
+        }
+      }
+    }
+  }
+}
+.prodCard.expanded {
+  .productImage { filter: brightness(.9); }
+  .prodInfo {
+    transform: translateY(-50%);
+    line-clamp: unset;
+    -webkit-line-clamp: unset;
+    overflow: visible;
+    text-overflow: unset;
+  }
+}
+
+#products { margin: 3rem clamp(50px, 5vw, 75px) 4.8rem clamp(50px, 5vw, 75px); flex: 1; display: flex; flex-direction: column; }
+#searchBar {
+  position: relative; width: 40%; min-width: 250px; align-self: center;
+  #searchBarButton {
+    position: absolute;
+    right: 1.3rem;
+    top: 51%;
+    transform: translateY(-51%);
+    cursor: pointer;
+    img { width: 1.8rem; }
+  }
+}
+
+.deleteButton {
+  position: absolute;
+  top: 1.8rem;
+  left: 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  img { height: 1.8rem; width: 1.8rem; }
+}
