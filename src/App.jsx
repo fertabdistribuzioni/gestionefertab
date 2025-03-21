@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
+import { HashRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import HeaderBar from "./components/HeaderBar.jsx";
 import AggiungiProdotto from "./AggiungiProdotto.jsx";
 import EliminaProdotto from "./EliminaProdotto.jsx";
