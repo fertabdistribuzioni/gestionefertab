@@ -3,13 +3,13 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB87ErUyUGARKyWwBFuVNJEU1R2ZrHoIuY",
-  authDomain: "fertabdistribuzioni-259b5.firebaseapp.com",
-  projectId: "fertabdistribuzioni-259b5",
-  storageBucket: "fertabdistribuzioni-259b5.firebasestorage.app",
-  messagingSenderId: "190560040474",
-  appId: "1:190560040474:web:b0063c7ae3f9873a23c3a3",
-  measurementId: "G-813EK68Y9M"
+  apiKey: "AIzaSyDXY7RU2nNKwNZ5qf8PzNIT4S_PNQ_nA1Q",
+  authDomain: "fertabdistribuzioni-28efb.firebaseapp.com",
+  projectId: "fertabdistribuzioni-28efb",
+  storageBucket: "fertabdistribuzioni-28efb.firebasestorage.app",
+  messagingSenderId: "359426280235",
+  appId: "1:359426280235:web:4ab3fe8895a2c0b078d36e",
+  measurementId: "G-QPQYYC1DXS"
 };
 
 const app = initializeApp(firebaseConfig);
