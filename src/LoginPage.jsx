@@ -1,61 +1,45 @@
 import { useState } from "react";
-import './App.css';
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
+import { auth, signInWithEmailAndPassword } from "../firebase_config.js";
 
-// Configura Firebase
-const auth = getAuth();
-
-const Login = () => {
+const Login = ({ setIsAuthenticated }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    setError(""); // Resetta eventuali errori precedenti
+  const handleLogin = async () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      // Se il login è riuscito, naviga alla pagina principale
+      setIsAuthenticated(true);
       navigate("/aggiungi-prodotto");
-    } catch (err) {
-      setError("Errore di login: " + err.message); // Mostra un messaggio di errore
+    } catch (error) {
+      alert("Errore di autenticazione: " + error.message);
     }
   };
 
   return (
-    <div id="contenitoreLogin" className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <div className="bg-white p-6 rounded-lg shadow-lg w-80">
-        <h2 className="text-2xl font-bold mb-4">Login</h2>
-        {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
-        <form onSubmit={handleLogin}>
-          <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="w-full p-2 mb-3 border rounded"
-            required
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="w-full p-2 mb-3 border rounded"
-            required
-          />
-          <button
-            type="submit"
-            className="w-full bg-blue-500 text-white p-2 rounded"
-          >
-            Accedi
-          </button>
-        </form>
-      </div>
+    <div id="contenutoLoginPage">
+      <h4>Accesso Fertab Distribuzioni</h4>
+      <input 
+        type="email" 
+        placeholder="Email" 
+        value={email} 
+        onChange={(e) => setEmail(e.target.value)}
+      />
+      <input 
+        type="password" 
+        placeholder="Password" 
+        value={password} 
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      <button onClick={handleLogin}>Login</button>
     </div>
   );
+};
+
+Login.propTypes = {
+  setIsAuthenticated: PropTypes.func.isRequired,
 };
 
 export default Login;

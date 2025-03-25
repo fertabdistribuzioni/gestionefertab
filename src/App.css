@@ -1,8 +1,17 @@
-#contenitoreLogin {
+#contenutoLoginPage {
   min-width: 200px;
   max-width: 400px;
-  width: 50%;
+  width: 75%;
+  margin: auto auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  h4 { margin-bottom: 15px; }
+  input { margin-bottom: 10px; }
 }
+
 
 #aggiungiProdotto {
   max-width: 100%;
