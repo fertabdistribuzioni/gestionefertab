@@ -82,7 +82,7 @@ const AggiungiProdotto = () => {
       const formData = new FormData();
       formData.append("image", webpBlob, "image.webp");
 
-      const apiKey = "c96f28573fabd70f90c7a87aa3379d8d";
+      const apiKey = "3276d6e30ea0f00d205a847f3e64b5ea";
       const response = await axios.post(`https://api.imgbb.com/1/upload?key=${apiKey}`, formData, { headers: { "Content-Type": "multipart/form-data" } });
 
       const uploadedImageUrl = response.data.data.url;
